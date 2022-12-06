@@ -1,0 +1,8 @@
+---
+- name: Ensure image is available ({{ image_name }})
+  community.docker.docker_image:
+    name: "{{ image_name }}"
+    state: present
+    source: pull
+  delegate_to: localhost
+  become: yes

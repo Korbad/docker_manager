@@ -1,0 +1,11 @@
+---
+- include_tasks: build_dockerfile.yml
+  when: docker_filename is defined
+
+- include_tasks: build_image_from_dockerfile.yml
+  when: docker_filename is defined
+
+- include_tasks: pull_image.yml
+  when: docker_filename is not defined
+
+- include_tasks: start_container.yml

@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: manage_docker_containers
+  author: Joshua Perry
+  description: Manages Docker images, networking (swarm), and containers via localhost
+  company: None
+  galaxy_tags: []

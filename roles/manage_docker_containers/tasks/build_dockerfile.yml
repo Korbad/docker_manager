@@ -1,0 +1,13 @@
+---
+- name: Manage the directory which houses the dockerfile ({{ container_path }})
+  file:
+    path: "{{ container_path }}"
+    state: directory
+    mode: 'ug+rwx'
+  delegate_to: localhost
+
+- name: Template Dockerfile, filename {{ docker_filename }}
+  template:
+    src: Dockerfile.j2
+    dest: "{{ container_path }}/{{ docker_filename }}"
+  delegate_to: localhost

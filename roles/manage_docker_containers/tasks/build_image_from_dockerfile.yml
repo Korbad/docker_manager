@@ -1,0 +1,12 @@
+---
+- name: build image ({{ image_name }}) from dockerfile ({{ docker_filename }})
+  docker_image:
+    name: "{{ image_name }}"
+    build:
+      path: "{{ container_path }}/"
+      dockerfile: "{{ container_path }}/{{ docker_filename }}"
+      pull: yes
+    source: build
+    state: present
+  delegate_to: localhost
+  become: yes
