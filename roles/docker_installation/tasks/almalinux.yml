@@ -1,0 +1,24 @@
+---
+- name: Install the 'Development tools' package group
+  ansible.builtin.dnf:
+    name: '@Development tools'
+    state: present
+  become: yes
+
+- name: Add repo to dnf config-manager
+  ansible.builtin.command:
+    cmd: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+  become: yes
+
+- name: Install docker-ce with erasing
+  ansible.builtin.dnf:
+    allowerasing: true
+    name: docker-ce
+  become: yes
+
+- name: Ensure docker service is started
+  ansible.builtin.service:
+    name: docker
+    enabled: yes
+    state: started
+  become: yes

@@ -1,0 +1,9 @@
+---
+- name: Update docker socket permissions so dynamic inventory works
+  file:
+    mode: 'u+rxw,g+rxw,'
+    path: /var/run/docker.sock
+  become: yes
+  notify:
+  - restart docker service
+    #cmd: sudo chmod 666 /var/run/docker.sock

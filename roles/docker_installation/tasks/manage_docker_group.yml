@@ -1,0 +1,16 @@
+---
+- name: Add current user to docker group
+  user:
+    name: "{{ lookup('env','USER') }}"
+    group: docker
+  become: yes
+  notify:
+  - restart docker service
+
+- name: Add ansible user to docker group
+  user:
+    name: ansible
+    group: docker
+  become: yes
+  notify:
+  - restart docker service
